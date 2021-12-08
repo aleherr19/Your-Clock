@@ -1,0 +1,23 @@
+This document specifies what milestones to reach before an MVP can be produced
+
+- Entirely written with Javascript & JQuery
+- Uses dynamic styling to change color scheme
+- Day and Night mode colors by default
+- Simple clock widget and/or weather widget
+- Fullsceen mode by button click
+- Dynamic for any screen size with its fluid design
+
+
+
+Stage 1:
+- Set up required project folder/files
+- Include required libraries and test to make sure they work
+- Implement a clock into the webpage using Javscript (Format should be HH:mm or HH:mm:ss for seconds too)
+- Make baseline HTML template with outlined boxes (No css yet really)
+
+Stage 2:
+- Create two extra color themes in css with a day/night mode
+- Create a slide-out UI that allows you to select different
+  color themes and switch up to day or night mode. 
+- Throw in a (developer plus) custom color theme (maybe like a dark mint color?)
+
