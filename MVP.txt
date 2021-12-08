@@ -12,11 +12,11 @@ This document specifies what milestones to reach before an MVP can be produced
 Stage 1:
 - Set up required project folder/files
 - Include required libraries and test to make sure they work
-- Implement a clock into the webpage using Javscript (Format should be HH:mm or HH:mm:ss for seconds too)
 - Make baseline HTML template with outlined boxes (No css yet really)
+- Implement a clock into the webpage using Javscript (Format should be HH:mm or HH:mm:ss for seconds too)
+- Create two extra color themes in css with a day/night mode
 
 Stage 2:
-- Create two extra color themes in css with a day/night mode
 - Create a slide-out UI that allows you to select different
   color themes and switch up to day or night mode. 
 - Throw in a (developer plus) custom color theme (maybe like a dark mint color?)
