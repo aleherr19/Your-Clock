@@ -1,0 +1,34 @@
+/* Styles for the day/night themes */
+
+ /* Day theme colors */
+.body-theme-day {
+  background-color: rgb(240, 240, 240);
+}
+
+.clockContainer-theme-day {
+  /* I would combine them into one, 
+     but it doesn't work well with  my CSS editor lol. */
+  box-shadow: 25px 25px 25px #FFFFFF,
+             -25px -25px 25px #dbdbdb;
+}
+
+.clockTime-theme-day {
+  color: #000;
+}
+
+
+
+
+/* Night theme colors */
+.body-theme-night {
+  background-color: rgb(29, 29, 29);
+}
+
+.clockContainer-theme-night {
+  box-shadow: 25px 25px 25px #0a0a0a,
+             -25px -25px 25px #242424;
+}
+
+.clockTime-theme-night {
+  color: rgb(175, 175, 175);
+}
