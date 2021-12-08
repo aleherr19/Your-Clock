@@ -1,11 +1,5 @@
 // Provides a simple clock with built-in DOM manipulation
 
-
-// Called by main script function
-function pageIsReady() {
-  // ...
-}
-
 // When a tick is produced
 function onTick() {
   var date = new Date();
