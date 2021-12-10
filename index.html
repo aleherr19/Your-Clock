@@ -9,6 +9,8 @@
   <link rel="stylesheet" href="css/style.main.css">
   <!-- Styles for the color themes -->
   <link rel="stylesheet" href="css/style.themes.css">
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 
   <title>Your clock</title>
@@ -24,16 +26,74 @@
 
 
 
+<!-- Below here is the adjustment page -->
+<button id="btnAdjustOpen" type="button" class="btn btn-link">
+  <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+  Adjustments
+</button>
+
+
+<section id="adjustmentContainer">
+  <button id="btnAdjustClose" type="button" class="btn btn-danger" style="float:right;">Close</button>
+  <br><br>
+
+  <h3>Time Format</h3>
+  <div id="btnGroupTimeFormat" class="btn-group btn-group-toggle" data-toggle="buttons">
+
+    <label class="btn btn-secondary active">
+      <input type="radio" name="options" id="option1" autocomplete="off"> 12 Hour
+    </label>
+
+    <label class="btn btn-secondary">
+      <input type="radio" name="options" id="option2" autocomplete="off"> 24 Hour
+    </label>
+  </div>
+  <br><br>
+
+  <h3>Theme</h3>
+  <div id="btnGroupTheme" class="btn-group btn-group-toggle" data-toggle="buttons">
+    
+    <label class="btn btn-secondary active">
+      <input type="radio" name="options" id="option1" autocomplete="off"> Day
+    </label>
+
+    <label class="btn btn-secondary">
+      <input type="radio" name="options" id="option2" autocomplete="off"> Night
+    </label>
+
+    <label class="btn btn-secondary">
+      <input type="radio" name="options" id="option3" autocomplete="off"> Auto
+    </label>
+  </div>
+  <br><br>
+
+  <h3>Face Orientation</h3>
+  <div id="btnGroupOrientation" class="btn-group btn-group-toggle" data-toggle="buttons">
+
+    <label class="btn btn-secondary active">
+      <input type="radio" name="options" id="option1" autocomplete="off"> Horizontal
+    </label>
+
+    <label class="btn btn-secondary">
+      <input type="radio" name="options" id="option2" autocomplete="off"> Verticle
+    </label>
+  </div>
+
+  
+
+</section>
+
 
 
 
   <!-- Required libraries
-        - JQuery
+        - JQuery (hosted)
         - script.main.js
         - script.clock.js -->
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
+  <script src="js/script.adjustment.js"></script>
   <script src="js/script.clock.js"></script>
   <!-- Any other JS scripts that rely on script.main.js go
        above this line. -->
