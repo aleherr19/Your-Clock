@@ -15,7 +15,7 @@ function updateClockTick() {
   // By default it is military time
   // 
   if (currentClockSetting == ADJUSTMENT_CLOCK_USE_12_HOUR) {
-    if (hour > 12 && minute > 59) {
+    if (hour > 12) {
       hour -= 12;
     }
   }
