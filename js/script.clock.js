@@ -21,7 +21,7 @@ function updateClockTick() {
   }
 
   // Update the clock text
-  $clockComponent.text(zeroPad(hour) + ":" + zeroPad(minute) + ":" + zeroPad(second));
+  $clockComponent.text(zeroPad(hour) + ":" + zeroPad(minute)); // + ":" + zeroPad(second));
 }
 
 
