@@ -22,9 +22,15 @@ function updateClockTick() {
 
   // Adjustments made by script.adjustment.js
   // apply a <br> to create a horitonztal or verticle clock face
-  if (currentOrientationSetting == ADJUSTMENT_ORIENTATION_HORIZONTAL) {
+  if (currentOrientationSetting == ADJUSTMENT_ORIENTATION_HORIZONTAL) { 
+    // Remove padding by clock when horizontal
+    $clockComponent.parent().css("marginTop", "");
+
     $clockComponent.text(zeroPad(hour) + ":" + zeroPad(minute));
   } else if (currentOrientationSetting == ADJUSTMENT_ORIENTATION_VERTICAL) {
+    // Add padding by clock when vertical
+    $clockComponent.parent().css("marginTop", "1.5rem");
+
     $clockComponent.html(zeroPad(hour) + "<br>" + zeroPad(minute));
   }
 }
