@@ -156,22 +156,13 @@ function windowThemeChanged(e){
 
 
 
-
+// Applies a "day" or "night" theme to the website
+// based on the input string
 function applyTheme(themeString){
     // Grab all the elements that require changing
-    var $themeBody = $("body");
-    var $themeClockContainer = $("#clockContainer");
-    var $themeClockTime = $("#clockTime");
-  
-    // Remove classes
-    // NOTE: Applying this to other elements with class styling will cause caous 
-    $themeBody.removeClass();
-    $themeClockContainer.removeClass();
-    $themeClockTime.removeClass();
-
-    // Add day classes
-    $themeBody.addClass("body-theme-" + themeString);
-    $themeClockContainer.addClass("clockContainer-theme-" + themeString);
-    $themeClockTime.addClass("clockTime-theme-" + themeString);
-
+    // remove the classes and then add the classes with the specified
+    // "day" or "night" string
+    $("body").removeClass().addClass("body-theme-" + themeString);
+    $("#clockContainer").removeClass().addClass("clockContainer-theme-" + themeString);
+    $("#clockTime").removeClass().addClass("clockTime-theme-" + themeString);
 }
