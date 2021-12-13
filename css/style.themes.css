@@ -16,6 +16,11 @@
   color: #000;
 }
 
+.adjustment-theme-day {
+  background-color: rgb(29, 29, 29);
+  box-shadow: 0px -1rem 15px rgb(29, 29, 29);
+}
+
 
 
 
@@ -31,4 +36,13 @@
 
 .clockTime-theme-night {
   color: rgb(175, 175, 175);
+}
+
+.adjustment-theme-night {
+  background-color: rgb(240, 240, 240);
+  box-shadow: 0px -1rem 15px rgb(240, 240, 240);
+}
+
+.adjustment-theme-night > h3 {
+  color: #000;
 }

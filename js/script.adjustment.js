@@ -165,4 +165,5 @@ function applyTheme(themeString){
     $("body").removeClass().addClass("body-theme-" + themeString);
     $("#clockContainer").removeClass().addClass("clockContainer-theme-" + themeString);
     $("#clockTime").removeClass().addClass("clockTime-theme-" + themeString);
+    $("#adjustmentContainer").removeClass().addClass("adjustment-theme-" + themeString);
 }
