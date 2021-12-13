@@ -15,7 +15,9 @@ var currentThemeSetting = 0;
 var watchTheme = window.matchMedia("(prefers-color-scheme: dark)");
 
 
-var currentOrientationSetting = 0;
+const ADJUSTMENT_ORIENTATION_HORIZONTAL = 0;
+const ADJUSTMENT_ORIENTATION_VERTICAL = 1;
+var currentOrientationSetting = ADJUSTMENT_ORIENTATION_HORIZONTAL;
 
 
 // Initiator of this script

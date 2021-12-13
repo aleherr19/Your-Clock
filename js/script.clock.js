@@ -20,8 +20,13 @@ function updateClockTick() {
     }
   }
 
-  // Update the clock text
-  $clockComponent.text(zeroPad(hour) + ":" + zeroPad(minute)); // + ":" + zeroPad(second));
+  // Adjustments made by script.adjustment.js
+  // apply a <br> to create a horitonztal or verticle clock face
+  if (currentOrientationSetting == ADJUSTMENT_ORIENTATION_HORIZONTAL) {
+    $clockComponent.text(zeroPad(hour) + ":" + zeroPad(minute));
+  } else if (currentOrientationSetting == ADJUSTMENT_ORIENTATION_VERTICAL) {
+    $clockComponent.html(zeroPad(hour) + "<br>" + zeroPad(minute));
+  }
 }
 
 
