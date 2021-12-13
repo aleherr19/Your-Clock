@@ -7,7 +7,14 @@ const ADJUSTMENT_CLOCK_USE_12_HOUR = 0;
 const ADJUSTMENT_CLOCK_USE_24_HOUR = 1;
 var currentClockSetting = 0;
 
+const THEME_DAY = 0;
+const THEME_NIGHT = 1;
+const THEME_AUTO = 2;
+
 var currentThemeSetting = 0;
+var watchTheme = window.matchMedia("(prefers-color-scheme: dark)");
+
+
 var currentOrientationSetting = 0;
 
 
@@ -50,10 +57,10 @@ function pageIsReady() {
       currentClockSetting = index;
 
       // Remove the css highlight on any of the elements
-      $inputGroupTime.parents().removeClass("active");
+      $inputGroupTime.parent().removeClass("active");
 
       // Highlight this element
-      thisElement.parents().addClass("active");
+      thisElement.parent().addClass("active");
     });
   });
 
@@ -69,13 +76,20 @@ function pageIsReady() {
       var thisElement = $(e);
   
       $(e).click(function() {
-        currentThemeSetting = index;
 
-        // Remove the css highlight on any of the elements
-        $inputGroupTheme.parents().removeClass("active");
-  
-        // Highlight this element
-        thisElement.parents().addClass("active");
+        if (currentThemeSetting != index) {
+          currentThemeSetting = index;
+
+          // Remove the css highlight on any of the elements
+          $inputGroupTheme.parent().removeClass("active");
+    
+          // Highlight this element
+          thisElement.parent().addClass("active");
+          
+          // Updates the UI to a dark or light theme
+          themeOptions(index);
+        }
+
       });
     });
 
@@ -95,11 +109,69 @@ function pageIsReady() {
         currentOrientationSetting = index;
         
         // Remove the css highlight on any of the elements
-        $inputGroupOrientation.parents().removeClass("active");
+        $inputGroupOrientation.parent().removeClass("active");
   
         // Highlight this element
-        thisElement.parents().addClass("active");
+        thisElement.parent().addClass("active");
+
       });
     });
+
+}
+
+
+
+
+
+function themeOptions(selectedIndex){
+
+  if (selectedIndex == THEME_DAY) {
+    watchTheme.removeEventListener("change", windowThemeChanged);
+    applyTheme("day");
+  } else if (selectedIndex == THEME_NIGHT) {
+    watchTheme.removeEventListener("change", windowThemeChanged);
+    applyTheme("night");
+  } else if (selectedIndex == THEME_AUTO) {
+    // Register an event listener.
+    // Call an event when the host system's theme changes
+    windowThemeChanged(watchTheme);
+    watchTheme.addEventListener("change", windowThemeChanged);
+  }
+
+
+}
+
+
+// Called when the host system theme is changed
+function windowThemeChanged(e){
+  const newTheme = e.matches ? "dark" : "light";
+
+  if (newTheme == "dark") {
+    applyTheme("night");
+  } else if (newTheme == "light") {
+    applyTheme("day");
+  }
+
+}
+
+
+
+
+function applyTheme(themeString){
+    // Grab all the elements that require changing
+    var $themeBody = $("body");
+    var $themeClockContainer = $("#clockContainer");
+    var $themeClockTime = $("#clockTime");
+  
+    // Remove classes
+    // NOTE: Applying this to other elements with class styling will cause caous 
+    $themeBody.removeClass();
+    $themeClockContainer.removeClass();
+    $themeClockTime.removeClass();
+
+    // Add day classes
+    $themeBody.addClass("body-theme-" + themeString);
+    $themeClockContainer.addClass("clockContainer-theme-" + themeString);
+    $themeClockTime.addClass("clockTime-theme-" + themeString);
 
 }
