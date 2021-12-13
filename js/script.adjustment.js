@@ -20,6 +20,7 @@ const ADJUSTMENT_ORIENTATION_VERTICAL = 1;
 var currentOrientationSetting = ADJUSTMENT_ORIENTATION_HORIZONTAL;
 
 
+
 // Initiator of this script
 function pageIsReady() {
 
@@ -32,13 +33,20 @@ function pageIsReady() {
   $btnAdjust.click(function() {
     // Show the adjustment pane & hide this button
     $btnAdjust.hide();
-    $adjustContainer.show();
+    
+    $adjustContainer.animate({
+      right: "18rem"
+    }, 200, "swing");
   });
 
   $btnAdjustClose.click(function() {
     // Hide the adjustment pane & show this button
-    $adjustContainer.hide();
     $btnAdjust.show();
+
+    $adjustContainer.animate({
+      right: 0
+    }, 200, "swing");
+
   });
 
   
