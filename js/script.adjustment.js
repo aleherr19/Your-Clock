@@ -1,22 +1,38 @@
 
 // Object literal used for applying themes to the whole website
 const Theme = {
+
   THEME_LIGHT: 0,
   THEME_DARK: 1,
   THEME_AUTO: 2,
+
   ThemeListener: window.matchMedia("(prefers-color-scheme: dark)"),
+  isListenerRegistered: false,
+  _that: null,
+
+  themeHandler: (e) => {
+    _that.colorComponents(e.matches ? "dark" : "light");
+  },
+
 
   applyTheme: function(intTheme) {
+    // Context for the media query event listener function
+    _that = this;
+
+    if (this.isListenerRegistered) {
+      this.isListenerRegistered = false;
+      this.ThemeListener.removeEventListener("change", _that.themeHandler);
+    }
+
     if (intTheme == this.THEME_LIGHT) {
       this.colorComponents("light")
     } else if (intTheme == this.THEME_DARK) {
       this.colorComponents("dark")
     } else if (intTheme == this.THEME_AUTO) {
-      // TODO: It registers, but doesn't get removed
-      this.ThemeListener.addEventListener("change", themeListenerHandler = (e) => {
-        var systemTheme = e.matches ? "dark" : "light";
-        this.colorComponents(systemTheme);
-      });}
+      this.isListenerRegistered = true;
+      this.ThemeListener.addEventListener("change", _that.themeHandler);
+    }
+
   },
 
   colorComponents: function(themeString) {
