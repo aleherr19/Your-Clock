@@ -1,22 +1,22 @@
 /* Styles for the day/night themes */
 
  /* Day theme colors */
-.body-theme-day {
+.body-theme-light {
   background-color: rgb(240, 240, 240);
 }
 
-.clockContainer-theme-day {
+.clockContainer-theme-light {
   /* I would combine them into one, 
      but it doesn't work well with  my CSS editor lol. */
   box-shadow: 25px 25px 25px #FFFFFF,
              -25px -25px 25px #dbdbdb;
 }
 
-.clockTime-theme-day {
+.clockTime-theme-light {
   color: #000;
 }
 
-.adjustment-theme-day {
+.adjustment-theme-light {
   background-color: rgb(29, 29, 29);
   box-shadow: 0px -1rem 15px rgb(29, 29, 29);
 }
@@ -25,23 +25,23 @@
 
 
 /* Night theme colors */
-.body-theme-night {
+.body-theme-dark {
   background-color: rgb(29, 29, 29);
 }
 
-.clockContainer-theme-night {
+.clockContainer-theme-dark {
   box-shadow: 25px 25px 25px #0a0a0a,
              -25px -25px 25px #242424;
 }
 
-.clockTime-theme-night {
+.clockTime-theme-dark {
   color: rgb(175, 175, 175);
 }
 
-.adjustment-theme-night {
+.adjustment-theme-dark {
   background-color: rgb(240, 240, 240);
 }
 
-.adjustment-theme-night > h3 {
+.adjustment-theme-dark > h3 {
   color: #000;
 }

@@ -1,33 +1,40 @@
-// Provides a simple clock with built-in DOM manipulation
+
+function initClock() {
+
+  setInterval( () => {
+    prepareClockRender();
+  }, 1000);
+
+}
 
 
-// Set the time of the clock
-function updateClockTick() {
-  var $clockComponent = $("#clockTime");
+function prepareClockRender() {
 
-  var mDate = new Date();
+  var clockDate = new Date();
+  var clockHour = clockDate.getHours();
+  var clockMinute = clockDate.getMinutes();
 
-  var hour = mDate.getHours();
-  var minute = mDate.getMinutes();
-  var second = mDate.getSeconds();
 
-  // Adjustments made by script.adjustment.js
-  // By default it is military time
-  // 
-  if (currentClockSetting == ADJUSTMENT_CLOCK_USE_12_HOUR) {
-    if (hour > 12) {
-      hour -= 12;
+  if (!Settings.prefersMilitaryTime) {
+    if (clockHour > 12) {
+      clockHour -= 12;
     }
   }
 
-  // Adjustments made by script.adjustment.js
-  // apply a <br> to create a horitonztal or verticle clock face
-  if (currentOrientationSetting == ADJUSTMENT_ORIENTATION_HORIZONTAL) { 
-    // Remove padding by clock when horizontal
-    $clockComponent.parent().css("marginTop", "");
+  renderClockTime(clockHour, clockMinute);
+}
 
-    $clockComponent.text(zeroPad(hour) + ":" + zeroPad(minute));
-  } else if (currentOrientationSetting == ADJUSTMENT_ORIENTATION_VERTICAL) {
+
+function renderClockTime(hour, minute) {
+
+  var $clockComponent = $("#clockTime");
+
+  if (Settings.clockOrientation == ClockOrientation.HORIZONTAL) {
+     // Remove padding by clock when horizontal
+     $clockComponent.parent().css("marginTop", "");
+
+     $clockComponent.text(zeroPad(hour) + ":" + zeroPad(minute));
+  } else if (Settings.clockOrientation == ClockOrientation.VERTICAL) {
     // Add padding by clock when vertical
     $clockComponent.parent().css("marginTop", "1.5rem");
 
@@ -37,8 +44,6 @@ function updateClockTick() {
 
 
 // Thanks for the slice idea https://stackoverflow.com/questions/18889548/javascript-change-gethours-to-2-digit
-// Add leading zeros to numbers,
-// returns a string
 function zeroPad(num) {
   return ("0" + num).slice(-2);
 }
