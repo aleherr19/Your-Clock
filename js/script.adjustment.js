@@ -127,7 +127,7 @@ function initAdjustmentPanel() {
       var thisElement = $(e);
   
       $(e).click(function() {
-        currentOrientationSetting = index;
+        Settings.clockOrientation = index;
         
         // Remove the css highlight on any of the elements
         $inputGroupOrientation.parent().removeClass("active");
