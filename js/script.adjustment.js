@@ -79,79 +79,37 @@ function initAdjustmentPanel() {
 
   });
 
-
-  // Add click listeners to each radio input. And when clicked,
-  // update the corresponding option with an int value based
-  // on the button index. (Taking a look at the UI will help)
-  var $inputGroupTime = $("#btnGroupTimeFormat > label > input");
-  // For each option in the radio group
-  $inputGroupTime.each(function(index, e) {
-    // Add a click listener. Set the
-    // adjustment value equal to
-    // the index
-    // TODO: Kind of makes the CONST variable useless
-    // in a sort of way
-    var thisElement = $(e);
-
-    $(e).click(function() {
-      Settings.prefersMilitaryTime = index;
-
-      // Remove the css highlight on any of the elements
-      $inputGroupTime.parent().removeClass("active");
-
-      // Highlight this element
-      thisElement.parent().addClass("active");
-    });
+  // Click events for Time Format
+  radioGroupOnIndexSelected("#btnGroupTimeFormat", (clickedCallbackIndex) => {
+    Settings.prefersMilitaryTime = clickedCallbackIndex;
   });
 
-  // Find the radio group
-  var $inputGroupTheme = $("#btnGroupTheme > label > input");
-    // For each option in the radio group
-    $inputGroupTheme.each(function(index, e) {
-      // Add a click listener. Set the
-      // adjustment value equal to
-      // the index
-      // TODO: Kind of makes the CONST variable useless
-      // in a sort of way
-      var thisElement = $(e);
-  
-      $(e).click(function() {
+  // Click events for Theme
+  radioGroupOnIndexSelected("#btnGroupTheme", (clickedCallbackIndex) => {
+    Theme.applyTheme(clickedCallbackIndex);
+  });
 
-        if (Settings.Theme != index) {
-          Theme.applyTheme(index);
+  // Click events for Orientation
+  radioGroupOnIndexSelected("#btnGroupOrientation", (clickedCallbackIndex) => {
+    Settings.clockOrientation = clickedCallbackIndex;
+  });
 
-          // Remove the css highlight on any of the elements
-          $inputGroupTheme.parent().removeClass("active");
-    
-          // Highlight this element
-          thisElement.parent().addClass("active");
-        }
+}
 
-      });
+
+function radioGroupOnIndexSelected(bootstrapRadioGroup, indexCallbackFunc) {
+
+  var $radioButtonNodeList = $(bootstrapRadioGroup + " > label > input");
+
+  $radioButtonNodeList.each((index, element) => {
+    $(element).click( () => {
+      indexCallbackFunc(index);
+
+      // Bootstrap "active" HTML component styling
+      $radioButtonNodeList.parent().removeClass("active");
+      $(element).parent().addClass("active");
+
     });
-
-
-  // Find the radio group
-  var $inputGroupOrientation = $("#btnGroupOrientation > label > input");
-    // For each option in the radio group
-    $inputGroupOrientation.each(function(index, e) {
-      // Add a click listener. Set the
-      // adjustment value equal to
-      // the index
-      // TODO: Kind of makes the CONST variable useless
-      // in a sort of way
-      var thisElement = $(e);
-  
-      $(e).click(function() {
-        Settings.clockOrientation = index;
-        
-        // Remove the css highlight on any of the elements
-        $inputGroupOrientation.parent().removeClass("active");
-  
-        // Highlight this element
-        thisElement.parent().addClass("active");
-
-      });
-    });
+  });
 
 }
